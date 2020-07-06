@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.8.1"
+    id "io.freefair.lombok" version "5.1.0"
+}
+
+ext {
+    junitVersion = '5.6.2'
+}
+
+group 'ru.atrofimov'
+version '1.0-SNAPSHOT'
+
+allure {
+    version = '2.10.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.codeborne:selenide:5.12.2'
+    implementation 'io.qameta.allure:allure-selenide:2.13.0'
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+    testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.30'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    testRuntimeOnly 'io.qameta.allure:allure-junit5:2.13.3'
+}
+
+test {
+
+    // Configuration parameters to execute top-level classes in parallel but methods in same thread
+    systemProperties = [
+            'junit.jupiter.execution.parallel.enabled': true,
+            'junit.jupiter.execution.parallel.config.strategy': 'dynamic',
+            'junit.jupiter.execution.parallel.mode.default' : 'same_thread',
+            'junit.jupiter.execution.parallel.mode.classes.default' : 'concurrent'
+    ]
+
+    useJUnitPlatform()
+}

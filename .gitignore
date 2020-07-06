@@ -1,0 +1,7 @@
+build/
+.gradle/
+.idea/
+.allure/
+out/
+lombok.config
+gradle/wrapper/gradle-wrapper.jar
