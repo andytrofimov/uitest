@@ -4,7 +4,9 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.driver;
 import io.qameta.allure.Step;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class PhotoUploadPage {
 
     @Step

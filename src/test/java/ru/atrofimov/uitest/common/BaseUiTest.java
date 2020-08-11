@@ -9,7 +9,7 @@ public class BaseUiTest {
 
     @BeforeAll
     public static void beforeAll() {
-        // Configuration.browser = "firefox";
+//         Configuration.browser = "firefox";
         Configuration.baseUrl = "https://translate.yandex.ru";
     }
 
